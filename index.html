@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body class="bg">
+
+    <div class="container">
+        <form id="submit-form" action="">
+            <div class="brand-logo"></div>
+            <div class="brand-title">PBGTI</div>
+            <div class="inputs">
+                <label>NAME</label>
+                <input type="text" name="Name" style="text-transform: capitalize;" placeholder="NAME" />
+                <label>Number</label>
+                <input type="number" name="Watsapp Number" placeholder="Watsapp Number" />
+                <button type="submit">Submit</button>
+                <a style="background-color: #ecf0f3; color: black;" href="https://www.pbgti.com/">Click here for more
+                    details</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        $("#submit-form").submit((e) => {
+            e.preventDefault()
+            $.ajax({
+                url: "https://script.google.com/macros/s/AKfycbzIPK9-dWntgrWK-ReQ38a1YjZxxOPFJiZXiyrJasBs-CKK-Vl_DMyWuDRCIJE_8toR/exec",
+                data: $("#submit-form").serialize(),
+                method: "post",
+                success: function (response) {
+                    alert("Form submitted successfully")
+                    window.location.reload()
+                    //window.location.href="https://google.com"
+                },
+                error: function (err) {
+                    alert("Something Error")
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
