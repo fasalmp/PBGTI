@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>PBGTI</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
@@ -20,7 +19,8 @@
                 <input type="text" name="Name" style="text-transform: capitalize;" placeholder="NAME" />
                 <label>Number</label>
                 <input type="number" name="Watsapp Number" placeholder="Watsapp Number" />
-                <button type="submit">Submit</button>
+                <button type="submit" id="submit-btn">Submit</button>
+                <div id="loading" style="display: none;">Loading...</div>
                 <a style="background-color: #ecf0f3; color: black;" href="https://www.pbgti.com/">Click here for more
                     details</a>
             </div>
@@ -29,21 +29,35 @@
 
     <script>
         $("#submit-form").submit((e) => {
-            e.preventDefault()
+            e.preventDefault();
+
+            // Show loading sign
+            $("#submit-btn").hide();
+            $("#loading").show();
+
             $.ajax({
                 url: "https://script.google.com/macros/s/AKfycbzIPK9-dWntgrWK-ReQ38a1YjZxxOPFJiZXiyrJasBs-CKK-Vl_DMyWuDRCIJE_8toR/exec",
                 data: $("#submit-form").serialize(),
                 method: "post",
                 success: function (response) {
-                    alert("Form submitted successfully")
-                    window.location.reload()
-                    //window.location.href="https://google.com"
+                    // Hide loading sign after 3 seconds
+                    setTimeout(function () {
+                        $("#submit-btn").show();
+                        $("#loading").hide();
+                    }, 3000);
+
+                    alert("Form submitted successfully");
+                    window.location.reload();
                 },
                 error: function (err) {
-                    alert("Something Error")
+                    // Hide loading sign on error
+                    $("#submit-btn").show();
+                    $("#loading").hide();
+
+                    alert("Something Error");
                 }
-            })
-        })
+            });
+        });
     </script>
 </body>
 
