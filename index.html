@@ -10,13 +10,23 @@
 
 <body class="bg">
 
-    <div class="container">
+    <div class="container" id="card-container">
         <form id="submit-form" action="">
             <div class="brand-logo"></div>
             <div class="brand-title">PBGTI</div>
             <div class="inputs">
                 <label>NAME</label>
                 <input type="text" name="Name" style="text-transform: capitalize;" placeholder="NAME" />
+
+                <!-- Add the selection button here -->
+                <label>Select Your Course</label>
+                <select name="TrainingOptions">
+                    <option value="none">Select Your Course</option>
+                    <option value="HRM">HR Management Course</option>
+                    <option value="LegalTranslation"> Legal Translation Course</option>
+                    <option value="QatarPR">Training in Qatar PR Service</option>
+                </select>
+
                 <label>Number</label>
                 <input type="number" name="Watsapp Number" placeholder="Watsapp Number" />
                 <button type="submit" id="submit-btn">Submit</button>
@@ -25,6 +35,11 @@
                     details</a>
             </div>
         </form>
+    </div>
+
+    <!-- Add a new div for the success message -->
+    <div id="success-message" style="display: none; text-align: center; font-size: 18px; margin-top: 20px;">
+        We will contact you soon. Thank you!
     </div>
 
     <script>
@@ -44,10 +59,14 @@
                     setTimeout(function () {
                         $("#submit-btn").show();
                         $("#loading").hide();
+
+                        // Show success message and hide the card
+                        $("#card-container").hide();
+                        $("#success-message").show();
                     }, 3000);
 
-                    alert("Form submitted successfully");
-                    window.location.reload();
+                    // alert("Form submitted successfully");
+                    // window.location.reload();
                 },
                 error: function (err) {
                     // Hide loading sign on error
