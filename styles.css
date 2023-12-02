@@ -21,18 +21,17 @@ body {
 .container {
   position: relative;
   width: 350px;
-  height: 500px;
+  height: 600px; /* Adjust the height as needed */
   border-radius: 20px;
   padding: 40px;
   box-sizing: border-box;
   background: #ecf0f3;
   box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
 }
-
 .brand-logo {
   height: 100px;
   width: 100px;
-  background: url("/logos.jpg");
+  background: url("/logo.jpg");
   margin: auto;
   border-radius: 50%;
   box-sizing: border-box;
@@ -52,7 +51,7 @@ body {
   margin-top: 30px;
 }
 
-label, input, button {
+label, input, select, button {
   display: block;
   width: 100%;
   padding: 0;
@@ -69,11 +68,7 @@ label:nth-of-type(2) {
   margin-top: 12px;
 }
 
-input::placeholder {
-  color: gray;
-}
-
-input {
+input, select {
   background: #ecf0f3;
   padding: 10px;
   padding-left: 20px;
@@ -81,6 +76,16 @@ input {
   font-size: 14px;
   border-radius: 50px;
   box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E") no-repeat right 10px center;
+}
+
+input::placeholder {
+  color: gray;
 }
 
 button {
@@ -116,6 +121,7 @@ h1 {
   top: 0;
   left: 0;
 }
+
 button {
   position: relative;
   overflow: hidden;
